@@ -1,8 +1,7 @@
 ;=================================
 ;; load path
 ;=================================
-(setq load-path (append '("~/.emacs.d/lisp/"
-			  "~/.emacs.d/lisp/color-theme-6.6.0/")
+(setq load-path (append '("~/.emacs.d/lisp/")
 			  load-path))
 
 ;===================================
@@ -84,10 +83,14 @@
 ;=================================
 ;; color theme
 ;=================================
-(global-font-lock-mode t)
-(require 'color-theme)
-(color-theme-initialize)
-(color-theme-nino)
+(setq custom-theme-directory "~/.emacs.d/themes/")
+(load-theme 'cbn t)
+(enable-theme 'cbn)
+;;(global-font-lock-mode t)
+;;(require 'color-theme)
+;;(color-theme-initialize)
+;;(color-theme-nino)
+
 ;;(color-theme-midnight)
 ;;(color-theme-dark-laptop)
 
