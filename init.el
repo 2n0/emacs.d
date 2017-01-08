@@ -46,19 +46,35 @@
 (setq tramp-default-method "sshx")
 
 ;===================================
-;; open *.h by c++-mode
+;; open files by xxx-mode
 ;===================================
-(setq auto-mode-alist
-      (append '(("\\.h$" . c++-mode))
-	      auto-mode-alist))
+(add-to-list 'auto-mode-alist '("\\.h$" . c++mode))
+(add-to-list 'auto-mode-alist '("Makefile.*$" . makefile-gmake-mode))
+(add-to-list 'auto-mode-alist '("\\.txt$" . shell-script-mode))
 
-(setq auto-mode-alist
-      (append '(("Makefile.*$" . makefile-gmake-mode))
-	      auto-mode-alist))
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.phtml$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\php$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.jsp$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html?$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.css?$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.js[x]?$" . web-mode))
 
-(setq auto-mode-alist
-      (append '(("\\.txt$" . shell-script-mode))
-	      auto-mode-alist))
+;=================================
+;; indent for web mode
+;=================================
+(defun web-mode-hook ()
+  "Hooks for web mode"
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-code-indent-offset 2)
+  (setq web-mode-sql-indent-offset 2)
+  (setq web-mode-style-padding 2)
+  (setq web-mode-script-padding 2)
+  (setq tab-width 2))
+(add-hook 'web-mode-hook 'web-mode-hook)
 
 ;=================================
 ;; short cut key
